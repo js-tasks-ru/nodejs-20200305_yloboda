@@ -30,7 +30,7 @@ describe('2-module-2-task', () => {
 
       lines.on('data', onData);
       lines.on('end', () => {
-        //expect(onData.calledThrice, 'событие data должно быть вызвано 3 раза').to.be.true;
+        expect(onData.calledThrice, 'событие data должно быть вызвано 3 раза').to.be.true;
         expect(onData.firstCall.args[0]).to.equal('ab');
         expect(onData.secondCall.args[0]).to.equal('cd');
         expect(onData.thirdCall.args[0]).to.equal('ef');
