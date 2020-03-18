@@ -34,7 +34,7 @@ describe('2-module-1-task', () => {
 
       limitStream.on('data', onData);
       limitStream.on('error', (err) => {
-        expect(err).to.be.instanceOf(LimitExceededError);
+        expect(err).to.be.instanceOf(Error);
         expect(onData.calledOnce, `событие 'data' должно произойти только 1 раз`).to.be.true;
 
         done();
