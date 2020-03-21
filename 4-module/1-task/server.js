@@ -2,6 +2,8 @@ const url = require('url');
 const http = require('http');
 const path = require('path');
 
+const fs = require('fs');
+
 const server = new http.Server();
 
 server.on('request', (req, res) => {
@@ -12,7 +14,24 @@ server.on('request', (req, res) => {
   switch (req.method) {
     case 'GET':
 
-      break;
+      fs.readFile(filepath, function(error, content) {
+        if (error) {
+          if (error.code == 'ENOENT') {
+            if (pathname.indexOf('/') > 0) {
+              res.writeHead(400);
+              res.end('Bad request');
+            } else {
+              res.writeHead(404);
+              res.end('No file 404 error');
+            }
+          }
+        } else {
+          res.writeHead(200);
+          res.end(content);
+        }
+      });
+
+     break;
 
     default:
       res.statusCode = 501;
