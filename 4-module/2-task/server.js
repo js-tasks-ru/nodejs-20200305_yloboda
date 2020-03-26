@@ -19,7 +19,8 @@ server.on('request', (req, res) => {
         if (error.code == 'ENOENT' || pathname.indexOf('/') > 0) {
           res.writeHead(400);
           res.end('Bad request');
-        } else if (error.code == 'EEXIST') {
+        }
+        if (error.code == 'EEXIST') {
           res.writeHead(409);
           res.end('File already exist');
         }
