@@ -16,7 +16,7 @@ server.on('request', (req, res) => {
       const writeStream = fs.createWriteStream(filepath, {flags: 'wx'});
 
       writeStream.on('error', (error) => {
-        if (error.code == 'ENOENT' && pathname.indexOf('/') > 0) {
+        if (error.code == 'ENOENT' || pathname.indexOf('/') > 0) {
           res.writeHead(400);
           res.end('Bad request');
         } else if (error.code == 'EEXIST') {
