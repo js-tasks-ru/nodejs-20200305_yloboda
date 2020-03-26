@@ -13,7 +13,6 @@ server.on('request', (req, res) => {
 
   switch (req.method) {
     case 'POST':
-
       const writeStream = fs.createWriteStream(filepath, {flags: 'wx'});
 
       writeStream.on('error', (error) => {
@@ -50,7 +49,6 @@ server.on('request', (req, res) => {
       req.pipe(limitedStream);
       limitedStream.pipe(writeStream);
       req.pipe(writeStream);
-
       break;
 
     default:

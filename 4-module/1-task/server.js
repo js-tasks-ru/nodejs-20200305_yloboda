@@ -1,7 +1,6 @@
 const url = require('url');
 const http = require('http');
 const path = require('path');
-
 const fs = require('fs');
 
 const server = new http.Server();
@@ -13,7 +12,6 @@ server.on('request', (req, res) => {
 
   switch (req.method) {
     case 'GET':
-
       fs.readFile(filepath, function(error, content) {
         if (error) {
           if (error.code == 'ENOENT') {
@@ -30,8 +28,7 @@ server.on('request', (req, res) => {
           res.end(content);
         }
       });
-
-     break;
+      break;
 
     default:
       res.statusCode = 501;

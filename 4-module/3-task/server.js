@@ -12,14 +12,12 @@ server.on('request', (req, res) => {
 
   switch (req.method) {
     case 'DELETE':
-
       fs.unlink(filepath, (error) => {
         if (!error) {
           res.writeHead(200);
           res.end('Deleted');
         };
         if (error) {
-          console.log(error);
           if (error.code == 'ENOENT' && pathname.indexOf('/') < 0) {
             res.writeHead(404);
             res.end('Not found');
@@ -29,7 +27,6 @@ server.on('request', (req, res) => {
           }
         }
       });
-
       break;
 
     default:
