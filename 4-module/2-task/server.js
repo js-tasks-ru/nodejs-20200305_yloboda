@@ -26,9 +26,7 @@ server.on('request', (req, res) => {
         }
       });
 
-      writeStream.on('close', (error) => {
-        console.log(error);
-        console.log(2);
+      writeStream.on('close', () => {
         res.writeHead(201);
         res.end('Success');
       });
