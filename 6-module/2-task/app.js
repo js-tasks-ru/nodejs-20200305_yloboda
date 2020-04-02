@@ -19,6 +19,7 @@ app.use(async (ctx, next) => {
     }
   }
 });
+
 const router = new Router({prefix: '/api'});
 
 router.get('/categories', categoryList);
