@@ -48,8 +48,8 @@ server.on('request', (req, res) => {
       });
 
       req.pipe(limitedStream);
-      req.pipe(writeStream);
       limitedStream.pipe(writeStream);
+      req.pipe(writeStream);
       break;
 
     default:
