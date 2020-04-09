@@ -12,7 +12,7 @@ module.exports.login = async function login(ctx, next) {
 
     if (user.verificationToken) {
       ctx.status = 400;
-      ctx.body = {error: 'Подтвердите email'};
+      ctx.body = {error: 'Такой email уже существует'};
       return;
     }
 
