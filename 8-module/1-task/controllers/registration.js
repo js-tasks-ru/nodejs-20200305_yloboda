@@ -16,7 +16,7 @@ module.exports.register = async (ctx, next) => {
   await user.setPassword(ctx.request.body.password);
 
   await user.save((err) => {
-    if (err) {
+    if (err && err.errors && err.errors.email) {
       ctx.status = 400;
       ctx.body = {errors: {email: err.errors.email.message}};
       return next();
